@@ -56,6 +56,8 @@
 				</div>
 				<div>title 1</div>
 			</div>
+			<a>이전</a>
+			<a>다음</a>
 		</section>
 		<footer class="bg-warning d-flex align-items-center justify-content-center">
 			<div class="text-small text-secondary">Copyright © Ticketing diary 2023</div>
