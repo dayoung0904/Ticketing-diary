@@ -1,0 +1,8 @@
+@charset "UTF-8";
+header {height:150px;}
+nav {height:100px;}
+.contents {min-height:500px;}
+footer {height:100px;}
+.calendar {height:30px; width: 30px;}
+.hrcss  { border-color: darkgray; width: 70%;}
+.nav {font-size: large;}
