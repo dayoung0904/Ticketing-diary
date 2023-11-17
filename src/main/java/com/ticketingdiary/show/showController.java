@@ -12,7 +12,7 @@ public class showController {
 	@GetMapping("/list-view")
 	public String showListView(Model model) {
 		
-		//model.addAttribute("viewName", "show/showList");
+		model.addAttribute("viewName", "show/showList");
 		return "template/layout";
 	}
 }

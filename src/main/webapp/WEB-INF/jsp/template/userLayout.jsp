@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Ticketing diary</title>
-
 <!-- 부트스트랩 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -15,14 +14,11 @@
 <link rel="stylesheet" type="text/css" href="/static/css/style.css">
 </head>
 <body>
+
 	<div id="wrap">
-	
 		<header>
-			<jsp:include page="../include/header.jsp" />
+			<jsp:include page="../include/userHeader.jsp" />
 		</header>
-		<nav>
-			<jsp:include page="../include/nav.jsp" />
-		</nav>
 		<section class="contents">
 			<jsp:include page="../${viewName}.jsp" />
 		</section>
@@ -30,6 +26,5 @@
 			<jsp:include page="../include/footer.jsp" />
 		</footer>
 	</div>
-
 </body>
 </html>
