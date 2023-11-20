@@ -57,10 +57,10 @@ $(document).ready(function(){
 		// url, param
 		let url = $(this).attr('action');
 		console.log(url);
-		let param = $(this).c(); 
+		let param = $(this).serialize(); 
 		console.log(param);
 		
-		$.post(url, params)
+		$.post(url, param)
 		.done(function(data){
 			if(data.code == 200){
 				// 성공

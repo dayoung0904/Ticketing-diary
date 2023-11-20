@@ -12,8 +12,8 @@
 		<button class="btn btn-outline-secondary" type="submit">Search</button>
 	</form>
 	<div class="mx-5 userLink">
-		<a href="#" class="mx-1">로그인</a> 
-		<a href="#" class="mx-1">회원가입</a> 
+		<a href="/user/sign-in-view" class="mx-1">로그인</a> 
+		<a href="/user/sign-up-view" class="mx-1">회원가입</a> 
 		<span>@@@님 안녕하세요</span> 
 		<a href="#" class="mx-1">로그아웃</a> 
 		<a href="#" class="mx-1"> <img class="calendar" src="/static/img/calendar.jpg" alt="diary"></a>

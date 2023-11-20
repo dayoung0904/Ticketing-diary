@@ -42,7 +42,7 @@
 			<div class="d-flex justify-content-between align-items-center">
 				<span class="sign-up-subject">전화번호</span>
 				<div class="m-3">
-					<input type="text" id="PhoneNumber" name="PhoneNumber" class="form-control col-12" placeholder="전화번호를 입력하세요">
+					<input type="text" id="phoneNumber" name="phoneNumber" class="form-control col-12" placeholder="전화번호를 입력하세요">
 				</div>
 			</div>
 			
@@ -103,6 +103,69 @@ $(document).ready(function(){
 				alert("중복확인에 실패했습니다. 관리자에게 문의해주세요.");
 			}
 		});
+	});
+	
+	// 회원가입
+	$('#signUpForm').on('submit',function(e){
+		e.preventDefault();
+		///alert("ㅁㅁㅁ");
+		
+		//validation
+		let loginId = $('#loginId').val().trim();
+		let password = $('#password').val();
+		let confirmPassword = $('#confirmPassword').val();
+		let name = $('#name').val().trim();
+		let phoneNumber = $('#phoneNumber').val().trim();
+		let email = $('#email').val().trim();
+		
+		if(!loginId){
+			alert("로그인 아이디를 입력하세요.");
+			return false;
+		}
+		if(!loginId || !confirmPassword){
+			alert("비밀번호를 입력하세요.");
+			return false;
+		}
+		if(loginId != confirmPassword){
+			alert("비밀번호가 일치하지 않습니다.");
+			return false;
+		}
+		if(!name){
+			alert("이름을 입력하세요.");
+			return false;
+		}
+		if(!phoneNumber){
+			alert("전화번호를 입력하세요.");
+			return false;
+		}
+		if(!email){
+			alert("이메일을 입력하세요.");
+			return false;
+		}
+		
+		// 중복체크 안되있는 경우
+		if($('#idCheckOk').hasClass('d-none')){
+			alert("아이디 중복체크를 해주세요.");
+			return false;
+		}
+		
+		// ajax
+		let url = $(this).attr('action');
+		let param = $(this).serialize();
+		console.log(url);
+		console.log(param);
+		
+		$.post(url, param) // request
+		.done(function(data){ // response
+			if(data.code == 200){ // 성공
+				alert("가입을 환영합니다. 로그인을 해주세요!");
+				location.href = "/user/sign-in-view"; // 로그인 화면으로 이동
+			} else{
+				// 로직 실패
+				alert(data.errorMessage);
+			}
+		});
+		
 	});
 });
 

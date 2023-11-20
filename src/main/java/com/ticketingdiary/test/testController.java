@@ -9,13 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ticketingdiary.user.userMapper;
+import com.ticketingdiary.user.mapper.UserMapper;
 
 @Controller
 public class testController {
 	
 		@Autowired
-		private userMapper usermapper;
+		private UserMapper usermapper;
 
 	// 1. string + response body -> html
 		@ResponseBody
