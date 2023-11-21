@@ -34,6 +34,7 @@
 			,`name`
 			,`phoneNumber`
 			,`email`
+			,`loginType`
 			,`createdAt`
 			,`updatedAt`
  		)
@@ -44,6 +45,7 @@
  			,#{name}
  			,#{phoneNumber}
  			,#{email}
+ 			,#{loginType}
  			,NOW()
  			,NOW()
  		)
@@ -62,6 +64,21 @@
 		FROM
 			`user`
 		WHERE `loginId` = #{loginId} AND `password` = #{password}
+ 	</select>
+ 	
+ 	<select id="selectUserByEmail" parameterType="String" resultType="com.ticketingdiary.user.domain.User">
+ 		SELECT
+ 			`id`
+			,`loginId`
+			,`password`
+			,`name`
+			,`phoneNumber`
+			,`email`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`user`
+		WHERE `email` = #{email}
  	</select>
  
  </mapper>

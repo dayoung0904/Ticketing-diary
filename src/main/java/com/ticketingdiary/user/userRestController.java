@@ -6,6 +6,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.manager.util.SessionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ticketingdiary.common.EncryptUtils;
 import com.ticketingdiary.user.bo.UserBO;
 import com.ticketingdiary.user.domain.User;
+import com.ticketingdiary.user.domain.kakaoLoginForm;
 
 @RequestMapping("/user")
 @RestController
 public class userRestController {
 
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	private UserBO userBO;
 	
@@ -101,4 +107,32 @@ public class userRestController {
 		
 		return result;
 	}
+	
+	// kakao로그인 요청을 처리한다.
+		@PostMapping("/kakao-login")
+		public String loginWithKakao(kakaoLoginForm form,
+				HttpServletRequest request){
+			logger.info("카카오 로그인 인증정보:"+ form);
+			
+			HttpSession session = request.getSession();
+			
+			User user = null;
+			user.setLoginId(form.getEmail());
+			user.setPassword(null);
+			user.setName(form.getName());
+			user.setPhoneNumber(form.getPhoneNumber());
+			user.setEmail(form.getEmail());
+			user.setLoginType("kakao");
+			
+			// 이메일로 가입여부 확인
+			User savedUser = userBO.loginWithKaKao(user);
+			
+			// 저장된 회원정보가 없으면 저장해서 돌아온 회원정보를 세션에 저장, 있으면 그대로 조회한 회원정보를 저장.
+			session.setAttribute("userId", savedUser.getId());
+			session.setAttribute("userName", savedUser.getName());
+			session.setAttribute("userLoginId", savedUser.getLoginId());
+			
+			
+			return "redirect:/show/list-view";
+		}
 }

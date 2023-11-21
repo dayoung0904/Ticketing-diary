@@ -20,9 +20,12 @@ public interface UserMapper {
 			@Param("password") String password, 
 			@Param("name") String name, 
 			@Param("phoneNumber") String phoneNumber, 
-			@Param("email") String email);
+			@Param("email") String email,
+			@Param("loginType") String loginType);
 	
 	public User selectUserByLoginIdPassword(
 			@Param("loginId") String loginId, 
 			@Param("password") String password);
+	
+	public User selectUserByEmail(String email);
 }
