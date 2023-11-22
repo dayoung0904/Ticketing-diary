@@ -15,4 +15,10 @@ public class showController {
 		model.addAttribute("viewName", "show/showList");
 		return "template/layout";
 	}
+	
+	@GetMapping("/list-detail-view")
+	public String showDetailView(Model model) {
+		model.addAttribute("viewName", "show/showDetailList");
+		return "template/layout";
+	}
 }

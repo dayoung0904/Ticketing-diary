@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="h-100 d-flex align-items-center justify-content-between">
-	<a href="#">
+	<a href="/show/list-view">
 		<div id="logo" class="text-center mx-5 px-5">
 			<h1>Ticket</h1>
 			<h2>diary</h2>
@@ -21,6 +21,6 @@
 			<span>@@@님 안녕하세요</span> 
 			<a href="/user/sign-out" class="mx-1">로그아웃</a> 
 		</c:if>
-		<a href="#" class="mx-1"> <img class="calendar" src="/static/img/calendar.jpg" alt="diary"></a>
+		<a href="/diary/diary-list-view" class="mx-1"> <img class="calendar" src="/static/img/calendar.jpg" alt="diary"></a>
 	</div>
 </div>
