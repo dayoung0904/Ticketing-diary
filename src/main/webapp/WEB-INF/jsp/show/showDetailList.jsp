@@ -6,7 +6,7 @@
 	<div class="col-8 d-flex flex-wrap">
 		<div class="show-box">
 			<div><img alt="공연포스터" src="#"></div>
-			<a href="#">title</a>
+			<a href="/show/show-detail-view?showId=''">title</a>
 			<div><img class="star" alt="별점" src="/static/img/star_fill.png"><span>4.5점</span></div>
 		</div>
 	</div>

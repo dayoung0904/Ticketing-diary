@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.ticketingdiary.show.mapper.ShowMapper">
+ 	
+ 	<select id="selectShowListLimit" resultType="com.ticketingdiary.show.domain.Show">
+ 		SELECT
+ 			`id`
+			,`name`
+			,`posterImagePath`
+		FROM
+			`show`
+		ORDER BY `id` DESC
+		LIMIT 30
+ 	</select>
+ 	
+ 	<select id="selectShowById" resultType="com.ticketingdiary.show.domain.Show">
+ 		SELECT
+ 			`id`
+			,`name`
+			,`posterImagePath`
+			,`location`
+			,`address`
+			,`startDate`
+			,`endDate`
+			,`category`
+			,`group`
+			,`price`
+			,`limitBuy`
+		FROM
+			`show`
+		WHERE
+			`id` = #{showId}
+ 	</select>
+ </mapper>
