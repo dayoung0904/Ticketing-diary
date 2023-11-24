@@ -26,6 +26,8 @@
 			,`endDate`
 			,`category`
 			,`group`
+			,`region`
+			,`ticketType`
 			,`price`
 			,`limitBuy`
 		FROM

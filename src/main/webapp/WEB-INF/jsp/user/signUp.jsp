@@ -63,7 +63,7 @@
 <div class="d-flex justify-content-center my-5">
 	<div>
 		<h5>이미 회원이시라면?</h5>
-		<a class="btn btn-block btn-secondary text-white my-3" href="#">로그인</a>	
+		<a class="btn btn-block btn-secondary text-white my-3" href="/user/sign-in-view">로그인</a>	
 	</div>
 </div>
 

@@ -18,7 +18,7 @@
 			<a href="/user/sign-up-view" class="mx-1">회원가입</a>
 		</c:if>
 		<c:if test="${not empty userName}"> 
-			<span>@@@님 안녕하세요</span> 
+			<span>${userName}님 안녕하세요</span> 
 			<a href="/user/sign-out" class="mx-1">로그아웃</a> 
 		</c:if>
 		<a href="/diary/diary-list-view" class="mx-1"> <img class="calendar" src="/static/img/calendar.jpg" alt="diary"></a>

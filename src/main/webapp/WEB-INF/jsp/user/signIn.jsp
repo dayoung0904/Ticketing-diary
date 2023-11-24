@@ -38,8 +38,7 @@
 <div class="d-flex justify-content-center my-5">
 	<div class="signUp-box">
 		<h5>아직 회원이 아니시라면?</h5>
-		<a class="btn btn-block btn-secondary text-white my-3" href="#">회원가입</a>
-		<a class="btn btn-block btn-warning text-white my-3" href="#">카카오 회원가입</a>
+		<a class="btn btn-block btn-secondary text-white my-3" href="/user/sign-up-view">회원가입</a>
 	</div>
 </div>
 

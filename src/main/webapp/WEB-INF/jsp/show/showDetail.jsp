@@ -16,20 +16,37 @@
 					<fmt:formatDate value="${show.startDate}" pattern="yyyy년 M월 d일" /> ~
 					<fmt:formatDate value="${show.endDate}" pattern="yyyy년 M월 d일" />
 				</div>
-				<div class="my-2">공연장소 : ${show.location}</div>
+				<div class="my-2"><a href="#">공연장소 : ${show.location}</a></div>
 				<div class="my-2">장르 : ${show.category}</div>
 				<div class="my-2">단체명 : ${show.group}</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="d-flex justify-content-center my-5">
-	<input type="date" id="bookingDate" name="bookingDate" 
-	min="<fmt:formatDate value="${show.startDate}" pattern="yyyy-MM-dd" />" 
-	max="<fmt:formatDate value="${show.endDate}" pattern="yyyy-MM-dd" />"
-	value="<fmt:formatDate value="${show.startDate}" pattern="yyyy-MM-dd" />">
+<div class="d-flex justify-content-end mr-5">
+	<div class="mx-5 d-flex align-items-center">
+		<input type="date" id="bookingDate" name="bookingDate" 
+		min="<fmt:formatDate value="${show.startDate}" pattern="yyyy-MM-dd" />" 
+		max="<fmt:formatDate value="${show.endDate}" pattern="yyyy-MM-dd" />">
+	</div>
+	<div class="mx-5">
+		<button id="bookingBtn" class="btn btn-block btn-info text-white my-3" data-show-id="${show.id}">예매하기</button>
+	</div>
 </div>
 
 <script>
+$(document).ready(function(){
+	$('#bookingBtn').on('click', function(e){
+		e.preventDefault();
+		let bookingDate = $('#bookingDate').val();
+		//alert(date);
+		let showId = $(this).data('show-id');
+		//alert(showId);
+
+		location.href="/booking/booking-detail-view?showId=" + showId + "&bookingDate=" + bookingDate;
+	
+	});
+	
+});
 
 </script>
