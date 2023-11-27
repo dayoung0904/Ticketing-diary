@@ -22,3 +22,16 @@ a:hover {
 .poster {height: 150px; width: 150px;}
 .detailPoster {height: 300px; width:200px;}
 .hrcss-booking {border-color: darkgray; width: 20%;}
+
+table {
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+.black-bg {
+  display : none;
+}
+
+.show-modal {
+  display : block;
+}

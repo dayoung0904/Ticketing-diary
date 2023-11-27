@@ -30,7 +30,7 @@
 		max="<fmt:formatDate value="${show.endDate}" pattern="yyyy-MM-dd" />">
 	</div>
 	<div class="mx-5">
-		<button id="bookingBtn" class="btn btn-block btn-info text-white my-3" data-show-id="${show.id}">예매하기</button>
+		<button id="bookingBtn" class="btn btn-block btn-info text-white my-3" data-show-id="${show.id}" data-user-name="${userName}">예매하기</button>
 	</div>
 </div>
 
@@ -38,13 +38,19 @@
 $(document).ready(function(){
 	$('#bookingBtn').on('click', function(e){
 		e.preventDefault();
-		let bookingDate = $('#bookingDate').val();
-		//alert(date);
-		let showId = $(this).data('show-id');
-		//alert(showId);
-
-		location.href="/booking/booking-detail-view?showId=" + showId + "&bookingDate=" + bookingDate;
+		
+		if($(this).data('user-name') == null || $(this).data('user-name') == ""){
+			alert("로그인 후 예매할 수 있습니다.");
+			location.href = "/user/sign-in-view";
+		} else{
+		
+			let bookingDate = $('#bookingDate').val();
+			//alert(date);
+			let showId = $(this).data('show-id');
+			//alert(showId);
 	
+			location.href="/booking/booking-detail-view?showId=" + showId + "&bookingDate=" + bookingDate;
+		}
 	});
 	
 });
