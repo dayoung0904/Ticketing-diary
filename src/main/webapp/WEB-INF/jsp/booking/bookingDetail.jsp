@@ -119,7 +119,7 @@ $(document).ready(function(){
 			// response
 			,success:function(data){
 				if(data.code == 200){
-					location.href= "/booking/end-view"
+					location.href= "/booking/end-view?bookingId=" + data.bookingId
 				} else if (data.code == 500){
 					alert(data.errorMessage);
 				}
