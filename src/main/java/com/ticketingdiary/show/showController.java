@@ -2,6 +2,8 @@ package com.ticketingdiary.show;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ticketingdiary.show.bo.ShowBO;
 import com.ticketingdiary.show.domain.Show;
+import com.ticketingdiary.show.domain.ShowStar;
 
 @RequestMapping("/show")
 @Controller
@@ -22,17 +25,21 @@ public class showController {
 	@GetMapping("/list-view")
 	public String showListView(Model model) {
 		
-		List<Show> showList = showBO.getShowListLimit();
+		List<ShowStar> showStarList = showBO.generateShowStarList();
 		
-		model.addAttribute("showList", showList);
+		model.addAttribute("showStarList", showStarList);
 		model.addAttribute("viewName", "show/showList");
 		return "template/layout";
 	}
 	
 	@GetMapping("/list-detail-view")
-	public String listDetailView(Model model) {
-		model.addAttribute("viewName", "show/showDetailList");
-		return "template/layout";
+	public String listDetailView(Model model,
+			@RequestParam("category") String category) {
+		
+		List<ShowStar> showStarListBycategory = showBO.generateShowStarByCategory(category);
+				
+		model.addAttribute("showStarListBycategory", showStarListBycategory);
+		return "show/showDetailList";
 	}
 	
 	@GetMapping("/show-detail-view")

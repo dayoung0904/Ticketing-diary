@@ -4,12 +4,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="d-flex align-items-center justify-content-center">
 	<div class="d-flex flex-wrap">
-		<c:forEach items="${showList}" var="show">
+		<c:forEach items="${showStarList}" var="showStar">
 		<div class="mx-3 text-center">
-			<a href="/show/show-detail-view?showId=${show.id}">
-				<img class="poster" src="${show.posterImagePath}" alt="공연 포스터">
-				<div>${show.name}</div>
+			<a href="/show/show-detail-view?showId=${showStar.show.id}">
+				<img class="poster" src="${showStar.show.posterImagePath}" alt="공연 포스터">
+				<div>${showStar.show.name}</div>
 			</a>
+			<div>★${showStar.averageStar}</div>
 		</div>
 		</c:forEach>
 	</div>

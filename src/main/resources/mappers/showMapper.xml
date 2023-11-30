@@ -35,4 +35,15 @@
 		WHERE
 			`id` = #{showId}
  	</select>
+ 	
+ 	<select id="selectShowByCategory" resultType="com.ticketingdiary.show.domain.Show">
+ 		SELECT
+ 			`id`
+			,`name`
+			,`posterImagePath`
+		FROM
+			`show`
+		WHERE
+			`category` = #{category}
+ 	</select>
  </mapper>

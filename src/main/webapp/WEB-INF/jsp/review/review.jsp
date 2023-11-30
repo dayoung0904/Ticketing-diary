@@ -80,6 +80,7 @@ $(document).ready(function(){
 					location.href= "/booking/booking-list-view"
 				} else if (data.code == 500){
 					alert(data.errorMessage);
+					location.href= "/booking/booking-list-view"
 				}
 			}
 			, error:function(request, status, error){

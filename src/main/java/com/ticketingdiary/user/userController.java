@@ -7,10 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ticketingdiary.aop.TimeTrace;
+
 @RequestMapping("user")
 @Controller
 public class userController {
 
+	@TimeTrace
 	@GetMapping("/sign-in-view")
 	public String signInView(Model model) {
 		

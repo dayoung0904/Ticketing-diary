@@ -12,4 +12,6 @@ public interface ShowMapper {
 	public List<Show> selectShowListLimit();
 	
 	public Show selectShowById(int showId);
+	
+	public List<Show> selectShowByCategory(String category);
 }

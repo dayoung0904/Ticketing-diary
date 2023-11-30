@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.ticketingdiary.review.mapper.ReviewMapper">
+
+	<insert id="insertReview" parameterType="map">
+		INSERT INTO `review`
+		(
+			`bookingId`
+			,`userId`
+			,`showId`
+			,`star`
+			,`comment`
+			,`createdAt`
+			,`updatedAt`
+		)
+		VALUES
+		(
+			#{bookingId}
+			,#{userId}
+			,#{showId}
+			,#{star}
+			,#{comment}
+			,NOW()
+			,NOW()
+		)
+	</insert>
+	
+	<select id="selectReviewByUserIdBookingId" parameterType="map" resultType="com.ticketingdiary.review.domain.Review">
+		SELECT
+			`bookingId`
+			,`userId`
+			,`showId`
+			,`star`
+			,`comment`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`review`
+		WHERE `userId` = #{userId} AND `bookingId` = #{bookingId}
+	</select>
+	
+	<select id="selectStarByShowId" resultType="int">
+		SELECT
+			`star`
+		FROM
+			`review`
+		WHERE `showId` = #{showId}
+	</select>
+	
+	<select id="selectCountByShowId" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			`review`
+		WHERE `showId` = #{showId}
+	
+	</select>
+</mapper>

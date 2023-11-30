@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="h-100 d-flex">
 	<div class="col-2">
 	</div>
 	<div class="col-8 d-flex flex-wrap">
+		<c:forEach items="${showStarListBycategory}" var="showStar">
 		<div class="show-box">
-			<div><img alt="공연포스터" src="#"></div>
-			<a href="/show/show-detail-view?showId=''">title</a>
-			<div><img class="star" alt="별점" src="/static/img/star_fill.png"><span>4.5점</span></div>
+			<a href="/show/show-detail-view?showId=${showStar.show.id}">
+				<img class="poster" src="${showStar.show.posterImagePath}" alt="공연 포스터">
+				<div>${showStar.show.name}</div>
+			</a>
+			<div>★${showStar.averageStar}</div>
 		</div>
+		</c:forEach>
 	</div>
 	<div class="col-2">
 		<div class="my-5">
