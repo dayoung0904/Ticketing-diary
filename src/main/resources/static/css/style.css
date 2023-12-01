@@ -70,3 +70,6 @@ table {
     font-size: 16px;
     resize: none;
 }
+.calendar-wrap {
+	width: 75%;
+}
