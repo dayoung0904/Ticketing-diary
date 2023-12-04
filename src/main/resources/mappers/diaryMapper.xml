@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ticketingdiary.diary.mapper.DiaryMapper">
+
+	<select id="selectByBookingId" resultType="com.ticketingdiary.diary.domain.Diary">
+		SELECT
+			`id`
+			,`bookingId`
+			,`userId`
+			,`content`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`diary`
+		WHERE `bookingId` = #{bookingId}
+	</select>
+	
+	<insert id="insertDiary" parameterType="map">
+		INSERT INTO `diary`
+		(
+			`bookingId`
+			,`userId`
+			,`content`
+			,`createdAt`
+			,`updatedAt`
+		)
+		VALUES
+		(
+			#{bookingId}
+			,#{userId}
+			,#{content}
+			,NOW()
+			,NOW()
+		)
+	</insert>
+	
+	<update id="updateDiaryByBookingIdUserId" parameterType="map">
+ 		UPDATE `diary`
+ 		SET
+ 			 `content` = #{content}
+ 			, `updatedAt` = NOW()
+ 		WHERE
+ 			`bookingId` = #{bookingId} AND `userId` = #{userId}
+ 	</update>
+</mapper>

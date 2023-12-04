@@ -44,8 +44,8 @@
 		// 이벤트         
 		events: "/diary-event"
 		,eventClick: function(info) {
-			alert(info.event.id);
-			window.open("/user/sign-in-view");
+			//alert(info.event.id);
+			window.open("/diary/create-view?bookingId=" + info.event.id);
 		}
 		
 		

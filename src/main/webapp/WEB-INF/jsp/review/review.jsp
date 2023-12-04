@@ -35,7 +35,7 @@
 					</fieldset>
 					<div>
 						<textarea class="col-auto form-control" type="text" id="comment"
-								  placeholder="리뷰를 남겨주세요.(200자 이내)"></textarea>
+								  placeholder="리뷰를 남겨주세요.(200자 이내)" maxlength="200"></textarea>
 					</div>
 				</form>	
 			</td>

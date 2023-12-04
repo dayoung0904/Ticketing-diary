@@ -11,4 +11,8 @@ import com.ticketingdiary.booking.Entiry.BookingEntity;
 public interface BookingRepository extends JpaRepository<BookingEntity, Integer> {
 
 	public List<BookingEntity> findByUserId(int userId);
+	
+	public BookingEntity findById(int bookingId);
+	
+
 }

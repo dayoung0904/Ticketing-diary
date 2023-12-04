@@ -3,6 +3,7 @@ package com.ticketingdiary.booking.bo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,5 +72,15 @@ public class BookingBO {
 		return myTicketList;
 	}
 	
-	
+	public MyTicket findMyTicketBybookingId(int bookingId) {
+		
+		MyTicket myTicket = new MyTicket();
+		
+		BookingEntity booking = bookingRepository.findById(bookingId);
+		
+		myTicket.setBookingEntity(booking);
+		myTicket.setShow(showBO.getShowById(booking.getShowId()));
+		
+		return myTicket;
+	}
 }
