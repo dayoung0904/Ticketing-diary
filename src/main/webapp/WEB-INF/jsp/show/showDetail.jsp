@@ -16,7 +16,7 @@
 					<fmt:formatDate value="${show.startDate}" pattern="yyyy년 M월 d일" /> ~
 					<fmt:formatDate value="${show.endDate}" pattern="yyyy년 M월 d일" />
 				</div>
-				<div class="my-2"><a href="#">공연장소 : ${show.location}</a></div>
+				<div class="my-2"><a href="/show/show-map?showId=${show.id}" class="location" data-location="${show.location}">공연장소 : ${show.location}</a></div>
 				<div class="my-2">장르 : ${show.category}</div>
 				<div class="my-2">단체명 : ${show.group}</div>
 			</div>
@@ -53,6 +53,7 @@ $(document).ready(function(){
 		}
 	});
 	
+		
 });
 
 </script>

@@ -53,4 +53,11 @@ public class showController {
 		model.addAttribute("viewName", "show/showDetail");
 		return "template/layout";
 	}
+	
+	@GetMapping("/show-map")
+	public String showMap(Model model) {
+		
+		model.addAttribute("viewName", "show/showMap");
+		return "template/layout";
+	}
 }
