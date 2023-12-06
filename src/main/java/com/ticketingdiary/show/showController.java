@@ -55,9 +55,16 @@ public class showController {
 	}
 	
 	@GetMapping("/show-map")
-	public String showMap(Model model) {
+	public String showMap(Model model,
+			@RequestParam("showId") int showId) {
 		
+		Show show = showBO.getShowById(showId);
+		
+		model.addAttribute("show", show);
 		model.addAttribute("viewName", "show/showMap");
 		return "template/layout";
 	}
+	
+	
+	
 }
