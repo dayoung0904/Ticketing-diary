@@ -28,4 +28,8 @@ public interface UserMapper {
 			@Param("password") String password);
 	
 	public User selectUserByEmail(String email);
+	
+	public User selectUserByNameEmail(
+			@Param("name") String name,
+			@Param("email") String email);
 }

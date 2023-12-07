@@ -35,7 +35,7 @@ dependencies {
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation 'javax.servlet:jstl:1.2'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	
+	implementation 'com.google.code.gson:gson:2.8.7'
 }
 
 tasks.named('bootBuildImage') {

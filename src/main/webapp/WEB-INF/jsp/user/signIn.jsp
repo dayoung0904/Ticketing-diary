@@ -81,49 +81,11 @@ $(document).ready(function(){
 			}
 		});
 	});
-});
-
-</script>
-
-<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.5.0/kakao.min.js"
-  integrity="sha384-kYPsUbBPlktXsY6/oNHSUDZoTX6+YI51f63jCPEIPFP09ttByAdxd2mEjKuhdqn4" crossorigin="anonymous">
-</script>
-<script>
-  Kakao.init('f729b84b0bebd8d1aed56ea6bfa7b954'); // 사용하려는 앱의 JavaScript 키 입력
-</script>
-
-<script>
-//카카오로그인
-$(document).ready(function(){
-	$('#kakao-login-btn').on('click', function(e) {
-		// alert("aaa");
-		e.preventDefault();
-	function kakaoLogin() {
-			Kakao.Auth.login({
-				success : function(auth) {
-					Kakao.API.request({
-						url : '/v2/user/me',
-						success : function(response) {
-							// 사용자 정보 추출
-							var account = response.kakao_account;
-							
-							$('#form-kakao-login input[name=email]').val(account.email);
-							$('#form-kakao-login input[name=name]').val(account.name);
-							$('#form-kakao-login input[name=phoneNumber]').val(account.phone_number);
-							// 사용자 정보가 포함된 폼을 서버로 제출한다.
-							document.querySelector('#form-kakao-login').submit();
-							
-						},
-						fail : function(error) {
-							alert("카카오로그인 처리 중 오류가 발생했습니다.");
-						},
-					})
-				},
-				fail : function(error) {
-					alert("카카오로그인 처리 중 오류가 발생했습니다. 관리자에게 문의해주세요.");
-				},
-			})
-		}
+	
+	$('#kakao-login-btn').on('click', function(){
+		location.href = "https://kauth.kakao.com/oauth/authorize?client_id=b37647856d203a399591434efcf628d9&redirect_uri=http://localhost:8080/user/kakao-login&response_type=code";
 	});
 });
+
 </script>
+

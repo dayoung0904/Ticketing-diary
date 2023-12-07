@@ -81,4 +81,19 @@
 		WHERE `email` = #{email}
  	</select>
  
- </mapper>
+ 	<select id="selectUserByNameEmail" parameterType="map" resultType="com.ticketingdiary.user.domain.User">
+ 		SELECT
+ 			`id`
+			,`loginId`
+			,`password`
+			,`name`
+			,`phoneNumber`
+			,`email`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`user`
+		WHERE `name` = #{name} AND `email` = #{email}
+	</select>
+	
+</mapper>

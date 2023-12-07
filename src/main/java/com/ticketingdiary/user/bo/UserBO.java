@@ -31,13 +31,18 @@ public class UserBO {
 		return userMapper.selectUserByLoginIdPassword(loginId, password);
 	}
 	
-	// input:user	output:user
-	public User loginWithKaKao(User user) {
-		User savedUser = userMapper.selectUserByEmail(user.getEmail());
-		if(savedUser == null) {
-			userMapper.insertUser(user.getLoginId(), user.getPassword(), user.getName(), user.getPhoneNumber(), user.getEmail(), user.getLoginType());
-			savedUser = userMapper.selectUserByEmail(user.getEmail());
-		}
-		return savedUser;
+	
+	// input:email name		output:user
+	public User findUserByNameEmail(String name, String email) {
+		return userMapper.selectUserByNameEmail(name, email);
+	}
+	
+	public void addKakaoUser(String name, String email) {
+		String loginType = "kakao";
+		String loginId = "";
+		String password = "";
+		String phoneNumber = "";
+		
+		userMapper.insertUser(loginId, password, name, phoneNumber, email, loginType);
 	}
 }
