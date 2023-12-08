@@ -68,6 +68,11 @@ $(document).ready(function(){
 		let showId = $(this).data('show-id');
 		// alert(star);
 		
+		if(!comment){
+			alert("내용을 작성해주세요.");
+			return false;
+		}
+		
 		$.ajax({
 			type: "post"
 			, url: "/review/create"

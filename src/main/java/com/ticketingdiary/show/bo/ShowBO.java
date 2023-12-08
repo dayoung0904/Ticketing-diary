@@ -23,10 +23,6 @@ public class ShowBO {
 	
 	private static final int POST_MAX_SIZE = 5;
 	
-	/*
-	 * //input:X output:List<Show> public List<Show> getShowListLimit(){ return
-	 * showMapper.selectShowListLimit(); }
-	 */
 	
 	//input:showId		output:Show
 	public Show getShowById(int showId) {
@@ -113,5 +109,10 @@ public class ShowBO {
 			showStarList.add(showStar);
 		}
 		return showStarList;
+	}
+	
+	// input:X		output: 전체 show의 갯수
+	public int findShowTotal() {
+		return showMapper.selectShowTotal();
 	}
 }

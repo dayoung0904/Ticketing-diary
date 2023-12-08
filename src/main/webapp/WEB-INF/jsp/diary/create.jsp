@@ -60,6 +60,10 @@ $(document).ready(function(){
 		let bookingId = $(this).data("booking-id");
 		let content = $('#diaryCreate').val();
 		
+		if(!content){
+			alert("내용을 작성해주세요.");
+			return false;
+		}
 		
 		$.ajax({
 			type: "post"
@@ -88,6 +92,10 @@ $(document).ready(function(){
 		let bookingId = $(this).data("booking-id");
 		let content = $('#diaryUpdate').val();
 		
+		if(!content){
+			alert("내용을 작성해주세요.");
+			return false;
+		}
 		
 		$.ajax({
 			type: "post"

@@ -20,4 +20,6 @@ public interface ShowMapper {
 	public Show selectShowById(int showId);
 	
 	public List<Show> selectShowByCategory(String category);
+	
+	public int selectShowTotal();
 }

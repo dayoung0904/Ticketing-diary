@@ -72,4 +72,10 @@
 		WHERE
 			`category` = #{category}
  	</select>
+ 	
+ 	<select id="selectShowTotal">
+ 		SELECT
+			count(*)
+		FROM `show`
+ 	</select>
  </mapper>
