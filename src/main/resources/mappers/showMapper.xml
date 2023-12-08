@@ -4,15 +4,41 @@
  
  <mapper namespace="com.ticketingdiary.show.mapper.ShowMapper">
  	
- 	<select id="selectShowListLimit" resultType="com.ticketingdiary.show.domain.Show">
+ 	<select id="selectShowListLimit" parameterType="map" resultType="com.ticketingdiary.show.domain.Show">
  		SELECT
  			`id`
 			,`name`
 			,`posterImagePath`
 		FROM
 			`show`
-		ORDER BY `id` DESC
-		LIMIT 30
+			
+			<if test="direction == 'next'">
+			WHERE
+			<![CDATA[
+			`id` < #{standardId}
+			]]>
+			ORDER BY `id` DESC
+			</if>
+			<if test="direction == 'prev'">
+			WHERE
+			`id` > #{standardId}
+			<![CDATA[
+			ORDER BY `id` ASC
+			]]>
+			</if>
+			<if test="direction == null">
+			ORDER BY `id` DESC
+			</if>
+		LIMIT ${limit} 
+ 	</select>
+ 	
+ 	<select id="selectPostIdBySort" resultType="int">
+ 		SELECT
+ 			`id`
+ 		FROM
+ 			`show`
+ 		ORDER BY `id` ${sort}
+ 		LIMIT 1
  	</select>
  	
  	<select id="selectShowById" resultType="com.ticketingdiary.show.domain.Show">

@@ -1,6 +1,7 @@
 package com.ticketingdiary.show.bo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,12 @@ public class ShowBO {
 	@Autowired
 	private ReviewBO reviewBO;
 	
-	//input:X		output:List<Show>
-	public List<Show> getShowListLimit(){
-		return showMapper.selectShowListLimit();
-	}
+	private static final int POST_MAX_SIZE = 5;
+	
+	/*
+	 * //input:X output:List<Show> public List<Show> getShowListLimit(){ return
+	 * showMapper.selectShowListLimit(); }
+	 */
 	
 	//input:showId		output:Show
 	public Show getShowById(int showId) {
@@ -31,10 +34,38 @@ public class ShowBO {
 	}
 	
 	// input:X 		output:List<ShowStar>
-	public List<ShowStar> generateShowStarList(){
+	public List<ShowStar> generateShowStarList(Integer prevId, Integer nextId){
+		String direction = null; // 방향
+		Integer standardId = null; // 기준 showId
 		List<ShowStar> showStarList = new ArrayList<>();
 		
-		List<Show> showList = showMapper.selectShowListLimit();
+		if(prevId != null) { // 이전
+			direction = "prev";
+			standardId = prevId;
+		
+			List<Show> showList = showMapper.selectShowListLimit(direction, standardId, POST_MAX_SIZE);
+			
+			for(Show show : showList) {
+				ShowStar showStar = new ShowStar();
+				
+				// show 한개
+				showStar.setShow(show);
+				
+				// 별점
+				showStar.setAverageStar(reviewBO.findReviewStarAverage(show.getId()));
+				
+				showStarList.add(showStar);
+			}
+			
+			Collections.reverse(showStarList); // 뒤집고 저장
+			
+			return showStarList;
+		} else if(nextId != null) { // 다음
+			direction = "next";
+			standardId = nextId;
+		}
+		
+		List<Show> showList = showMapper.selectShowListLimit(direction, standardId, POST_MAX_SIZE);
 		
 		for(Show show : showList) {
 			ShowStar showStar = new ShowStar();
@@ -47,8 +78,22 @@ public class ShowBO {
 			
 			showStarList.add(showStar);
 		}
+		
 		return showStarList;
 	}
+	
+	// 이전 페이지의 마지막인가?
+	public boolean isPrevLastPage(int prevId) {
+		int showId = showMapper.selectPostIdBySort("DESC");
+		return showId == prevId; // 같으면 끝 true, 아니면 false
+	}
+		
+	// 다음 페이지의 마지막인가?
+	public boolean istNextLastPage(int nextId) {
+		int showId = showMapper.selectPostIdBySort("ASC");
+		return showId == nextId; // 같으면 끝 true, 아니면 false
+	}
+	
 	
 	// input: category		output:List<ShowStar>
 	public List<ShowStar> generateShowStarByCategory(String category){
