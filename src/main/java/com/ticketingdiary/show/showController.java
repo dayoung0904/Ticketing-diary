@@ -2,8 +2,6 @@ package com.ticketingdiary.show;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ticketingdiary.Paging.domain.Paging;
 import com.ticketingdiary.show.bo.ShowBO;
 import com.ticketingdiary.show.domain.Show;
 import com.ticketingdiary.show.domain.ShowStar;
@@ -90,6 +89,24 @@ public class showController {
 		return "template/layout";
 	}
 	
-	
+	@GetMapping("/ShowList")
+	public String showList(Paging paging, Model model
+			,@RequestParam(value="nowPage", required=false) String nowPage
+			,@RequestParam(value="cntPerPage", required=false) String cntPerPage) {
+		
+		int total = showBO.countShow();
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if(nowPage == null) {
+			nowPage = "1";			
+		} else if(cntPerPage == null) {
+			cntPerPage = "5";			
+		}
+		paging = new Paging(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", paging);
+		model.addAttribute("viewAll", showBO.selectShow(paging));
+		return "show/showPaging";
+	}
 	
 }

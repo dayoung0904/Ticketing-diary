@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ticketingdiary.Paging.domain.Paging;
 import com.ticketingdiary.review.bo.ReviewBO;
 import com.ticketingdiary.show.domain.Show;
 import com.ticketingdiary.show.domain.ShowStar;
@@ -114,5 +115,13 @@ public class ShowBO {
 	// input:X		output: 전체 show의 갯수
 	public int findShowTotal() {
 		return showMapper.selectShowTotal();
+	}
+	
+	public int countShow() {
+		return showMapper.countShow();
+	};
+	
+	public List<Paging> selectShow(Paging paging){
+		return showMapper.selectShow(paging);
 	}
 }

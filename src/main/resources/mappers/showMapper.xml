@@ -73,9 +73,25 @@
 			`category` = #{category}
  	</select>
  	
- 	<select id="selectShowTotal">
+ 	<!-- 총 갯수 출력 -->
+ 	<select id="countShow">
  		SELECT
 			count(*)
 		FROM `show`
+ 	</select>
+ 	
+ 	<!-- 페이징 후 조회 -->
+ 	<select id="selectShow" resultType="com.ticketingdiary.Paging.domain.Paging">
+ 		SELECT * 
+		FROM (
+			SELECT ROWNUM RN, show.* 
+				FROM (
+						SELECT * 
+						FROM BOARD 
+						ORDER BY SEQ DESC 
+						) A
+				)
+		WHERE RN BETWEEN #{start} AND #{end}
+ 	
  	</select>
  </mapper>
