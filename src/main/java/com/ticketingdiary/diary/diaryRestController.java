@@ -8,6 +8,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +29,13 @@ public class diaryRestController {
 	@Autowired
 	private DiaryBO diaryBO;
 	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	/**
+	 * 캘린더에 작성될 event=booking list API
+	 * @param session
+	 * @return
+	 */
 	@GetMapping("/diary-event")
 	public List<Map<String, Object>> diaryEvent(HttpSession session){
 		
@@ -49,6 +58,13 @@ public class diaryRestController {
 		return diaryEventList;
 	}
 	
+	/**
+	 * 다이어리 작성 API
+	 * @param bookingId
+	 * @param content
+	 * @param session
+	 * @return
+	 */
 	@PostMapping("/diary/create")
 	public Map<String, Object> diaryCreate(
 			@RequestParam("bookingId") int bookingId,
@@ -59,6 +75,7 @@ public class diaryRestController {
 		
 		Map<String, Object> result = new HashMap<>();
 		if (userId == null) {
+			logger.info("[다이어리 생성] 비로그인 상태");
 			result.put("code", 500); // 비로그인 상태
 			result.put("result", "error");
 			result.put("errorMessage", "로그인을 해주세요.");
@@ -74,6 +91,13 @@ public class diaryRestController {
 		
 	}
 	
+	/**
+	 * 다이어리 수정 API
+	 * @param bookingId
+	 * @param content
+	 * @param session
+	 * @return
+	 */
 	@PostMapping("/diary/update")
 	public Map<String, Object> diaryUpdate(
 			@RequestParam("bookingId") int bookingId,
@@ -84,6 +108,7 @@ public class diaryRestController {
 		
 		Map<String, Object> result = new HashMap<>();
 		if (userId == null) {
+			logger.info("[다이어리 수정] 비로그인 상태");
 			result.put("code", 500); // 비로그인 상태
 			result.put("result", "error");
 			result.put("errorMessage", "로그인을 해주세요.");

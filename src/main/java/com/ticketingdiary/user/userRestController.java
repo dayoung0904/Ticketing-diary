@@ -33,6 +33,11 @@ public class userRestController {
 	@Autowired
 	private KakaoBO kakaoBO;
 	
+	/**
+	 * 중복확인 API
+	 * @param loginId
+	 * @return
+	 */
 	@RequestMapping("/is-duplicated-id")
 	public Map<String, Object> isDuplicatedId(
 			@RequestParam("loginId") String loginId){
@@ -52,7 +57,15 @@ public class userRestController {
 		return result;
 	}
 	
-	
+	/**
+	 * 회원가입 API
+	 * @param loginId
+	 * @param password
+	 * @param name
+	 * @param PhoneNumber
+	 * @param email
+	 * @return
+	 */
 	@PostMapping("/sign-up")
 	public Map<String, Object> signUp(
 			@RequestParam("loginId") String loginId,
@@ -79,7 +92,13 @@ public class userRestController {
 		return result;
 	}
 	
-	
+	/**
+	 * 로그인 API
+	 * @param loginId
+	 * @param password
+	 * @param request
+	 * @return
+	 */
 	@PostMapping("/sign-in")
 	public Map<String, Object> signIn(
 			@RequestParam("loginId") String loginId,
@@ -112,37 +131,42 @@ public class userRestController {
 		return result;
 	}
 	
-	// kakao로그인 요청을 처리한다.
+	/**
+	 * 카카오 로그인 API	
+	 * @param code
+	 * @param session
+	 * @param response
+	 * @throws IOException
+	 */
+	@RequestMapping("/kakao-login")
+	public void KakaoLogin(
+			@RequestParam("code") String code,
+			HttpSession session,
+			HttpServletResponse response) throws IOException {
+		String accessToken = kakaoBO.getAccessToken(code);
+		HashMap<String, Object> userInfo = kakaoBO.getUserInfo(accessToken);
 		
-		@RequestMapping("/kakao-login")
-		public void KakaoLogin(
-				@RequestParam("code") String code,
-				HttpSession session,
-				HttpServletResponse response) throws IOException {
-			String accessToken = kakaoBO.getAccessToken(code);
-			HashMap<String, Object> userInfo = kakaoBO.getUserInfo(accessToken);
+		logger.info("$$$$$userInfo : " + userInfo);
 			
-			logger.info("$$$$$userInfo : " + userInfo);
+		// 회원 정보 조회(이메일과 닉네임으로)
+		User user = userBO.findUserByNameEmail(String.valueOf(userInfo.get("nickname")), String.valueOf(userInfo.get("email")));
 			
-			// 회원 정보 조회(이메일과 닉네임으로)
-			User user = userBO.findUserByNameEmail(String.valueOf(userInfo.get("nickname")), String.valueOf(userInfo.get("email")));
+		// 로그인 처리
+		if(user != null) {
+			// 사용자가 있는 경우
+			session.setAttribute("userId", user.getId());
+			session.setAttribute("userName", user.getName());
 			
-			// 로그인 처리
-			if(user != null) {
-				// 사용자가 있는 경우
-				session.setAttribute("userId", user.getId());
-				session.setAttribute("userName", user.getName());
-				
-			} else {
-				// 사용자가 없는 경우 
-				//해당 메일과 닉네임으로 저장 다시 조회해서 & session 등록
-				userBO.addKakaoUser(String.valueOf(userInfo.get("nickname")), String.valueOf(userInfo.get("email")));
-				
-				User kakaoUser = userBO.findUserByNameEmail(String.valueOf(userInfo.get("nickname")), String.valueOf(userInfo.get("email")));
-				session.setAttribute("userId", user.getId());
-				session.setAttribute("userName", user.getName());
-				
-			}
-			response.sendRedirect("/show/list-view");
+		} else {
+			// 사용자가 없는 경우 
+			//해당 메일과 닉네임으로 저장 다시 조회해서 & session 등록
+			userBO.addKakaoUser(String.valueOf(userInfo.get("nickname")), String.valueOf(userInfo.get("email")));
+			
+			User kakaoUser = userBO.findUserByNameEmail(String.valueOf(userInfo.get("nickname")), String.valueOf(userInfo.get("email")));
+			session.setAttribute("userId", kakaoUser.getId());
+			session.setAttribute("userName", kakaoUser.getName());
+			
 		}
+		response.sendRedirect("/show/list-view");
+	}
 }

@@ -13,6 +13,11 @@ import com.ticketingdiary.aop.TimeTrace;
 @Controller
 public class userController {
 
+	/**
+	 * 로그인 view
+	 * @param model
+	 * @return
+	 */
 	@TimeTrace
 	@GetMapping("/sign-in-view")
 	public String signInView(Model model) {
@@ -21,6 +26,11 @@ public class userController {
 		return "template/userLayout";
 	}
 	
+	/**
+	 * 회원가입 view
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/sign-up-view")
 	public String signUpView(Model model) {
 		
@@ -28,6 +38,11 @@ public class userController {
 		return "template/userLayout";
 	}
 	
+	/**
+	 * 로그아웃
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/sign-out")
 	public String signOut(HttpSession session) {
 		// 세션에 있는 내용을 비운다.

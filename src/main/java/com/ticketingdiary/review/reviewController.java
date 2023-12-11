@@ -24,6 +24,13 @@ public class reviewController {
 	@Autowired
 	private ShowBO showBO;
 	
+	/**
+	 * 리뷰 view
+	 * @param bookingId
+	 * @param session
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/booking-review-view")
 	public String bookingReviewView(
 			@RequestParam("bookingId") int bookingId,
