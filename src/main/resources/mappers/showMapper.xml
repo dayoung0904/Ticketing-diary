@@ -73,25 +73,20 @@
 			`category` = #{category}
  	</select>
  	
- 	<!-- 총 갯수 출력 -->
- 	<select id="countShow">
+ 	<select id="selectShowPaging" resultType="com.ticketingdiary.show.domain.Show">
  		SELECT
-			count(*)
-		FROM `show`
+ 			`id`
+			,`name`
+			,`posterImagePath`
+		FROM
+			`show`
+		LIMIT #{start}, #{pageSize}
  	</select>
  	
- 	<!-- 페이징 후 조회 -->
- 	<select id="selectShow" resultType="com.ticketingdiary.Paging.domain.Paging">
- 		SELECT * 
-		FROM (
-			SELECT ROWNUM RN, show.* 
-				FROM (
-						SELECT * 
-						FROM BOARD 
-						ORDER BY SEQ DESC 
-						) A
-				)
-		WHERE RN BETWEEN #{start} AND #{end}
- 	
+ 	<select id="selectShowTotal">
+ 		SELECT
+ 			COUNT(*)
+ 		FROM
+ 			`show`
  	</select>
  </mapper>

@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ticketingdiary.Paging.domain.Paging;
 import com.ticketingdiary.review.bo.ReviewBO;
 import com.ticketingdiary.show.domain.Show;
 import com.ticketingdiary.show.domain.ShowStar;
@@ -117,11 +116,28 @@ public class ShowBO {
 		return showMapper.selectShowTotal();
 	}
 	
-	public int countShow() {
-		return showMapper.countShow();
-	};
-	
-	public List<Paging> selectShow(Paging paging){
-		return showMapper.selectShow(paging);
+	public List<ShowStar> findshowPaging(int page, int pageSize){
+		int start = 0;
+		if(page <= 0 ) {
+			page = 1;
+		} else {
+			start = (page - 1) * pageSize;
+		}
+		
+		List<ShowStar> showStarList = new ArrayList<>();
+		
+		List<Show> showList = showMapper.selectShowPaging(start, pageSize);
+		for(Show show : showList) {
+			ShowStar showStar = new ShowStar();
+			
+			// show 한개
+			showStar.setShow(show);
+			
+			// 별점
+			showStar.setAverageStar(reviewBO.findReviewStarAverage(show.getId()));
+			
+			showStarList.add(showStar);
+		}
+		return showStarList;
 	}
 }
