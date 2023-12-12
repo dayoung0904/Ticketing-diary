@@ -3,10 +3,7 @@ package com.ticketingdiary.booking.bo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +20,7 @@ public class BookingBO {
 	private BookingRepository bookingRepository;
 	
 	@Autowired
-	private ShowBO showBO;
-	
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+	private ShowBO showBO;	
 
 	public Integer addBooking(int userId, int showId, Date date, 
 			int buy, int amount, String agreement) {

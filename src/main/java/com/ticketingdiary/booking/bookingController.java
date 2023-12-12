@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,14 @@ public class bookingController {
 	@Autowired
 	private BookingBO bookingBO;
 	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	/**
+	 * 예약 리스트 view
+	 * @param model
+	 * @param session
+	 * @return
+	 */
 	@GetMapping("/booking-list-view")
 	public String bookingListView(Model model,
 			HttpSession session) {
@@ -35,6 +45,7 @@ public class bookingController {
 		Integer userId = (Integer)session.getAttribute("userId");
 		
 		if(userId == null) {
+			logger.info("[예약리스트 view] 비로그인 상태");
 			return "redirect:/user/sign-in-view";
 		}
 		
@@ -45,6 +56,13 @@ public class bookingController {
 		return "template/layout";
 	}
 	
+	/**
+	 * 예약하기 view
+	 * @param model
+	 * @param showId
+	 * @param bookingDate
+	 * @return
+	 */
 	@GetMapping("/booking-detail-view")
 	public String bookingDetailView(Model model,
 			@RequestParam("showId") int showId,
@@ -63,6 +81,12 @@ public class bookingController {
 		return "template/userLayout";
 	}
 	
+	/**
+	 * 예약완료 view
+	 * @param model
+	 * @param bookingId
+	 * @return
+	 */
 	@GetMapping("/end-view")
 	public String bookingEndView(Model model,
 			@RequestParam("bookingId") int bookingId) {

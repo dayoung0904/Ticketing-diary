@@ -21,6 +21,13 @@ public class showController {
 	@Autowired
 	private ShowBO showBO;
 	
+	/**
+	 * 메인 화면 및 전체 show list view
+	 * @param prevIdParam
+	 * @param nextIdParam
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/list-view")
 	public String showListView(
 			@RequestParam(value = "page", required = false) Integer page,
@@ -40,6 +47,12 @@ public class showController {
 		return "template/layout";
 	}
 	
+	/**
+	 * 카테고리 별 show list view
+	 * @param model
+	 * @param category
+	 * @return
+	 */
 	@GetMapping("/list-detail-view")
 	public String listDetailView(Model model,
 			@RequestParam("category") String category) {
@@ -50,6 +63,12 @@ public class showController {
 		return "show/showDetailList";
 	}
 	
+	/**
+	 * show 하나의 view
+	 * @param model
+	 * @param showId
+	 * @return
+	 */
 	@GetMapping("/show-detail-view")
 	public String showDetailView(
 			Model model,
@@ -62,6 +81,12 @@ public class showController {
 		return "template/layout";
 	}
 	
+	/**
+	 * show의 공연장 지도 view
+	 * @param model
+	 * @param showId
+	 * @return
+	 */
 	@GetMapping("/show-map")
 	public String showMap(Model model,
 			@RequestParam("showId") int showId) {
@@ -72,8 +97,6 @@ public class showController {
 		model.addAttribute("viewName", "show/showMap");
 		return "template/layout";
 	}
-	
-	
 	
 	
 }
