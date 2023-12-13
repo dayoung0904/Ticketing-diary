@@ -29,7 +29,8 @@
 	
 	<select id="selectReviewByUserIdBookingId" parameterType="map" resultType="com.ticketingdiary.review.domain.Review">
 		SELECT
-			`bookingId`
+			`id`
+			,`bookingId`
 			,`userId`
 			,`showId`
 			,`star`
@@ -56,5 +57,20 @@
 			`review`
 		WHERE `showId` = #{showId}
 	
+	</select>
+	
+	<select id="selectReviewByShowId" resultType="com.ticketingdiary.review.domain.Review">
+		SELECT
+			`id`
+			,`bookingId`
+			,`userId`
+			,`showId`
+			,`star`
+			,`comment`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`review`
+		WHERE `showId` = #{showId}
 	</select>
 </mapper>

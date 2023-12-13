@@ -96,4 +96,19 @@
 		WHERE `name` = #{name} AND `email` = #{email}
 	</select>
 	
+	<select id="selectUserById" resultType="com.ticketingdiary.user.domain.User">
+		SELECT
+ 			`id`
+			,`loginId`
+			,`password`
+			,`name`
+			,`phoneNumber`
+			,`email`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`user`
+		WHERE `id` = #{id}
+	</select>
+	
 </mapper>

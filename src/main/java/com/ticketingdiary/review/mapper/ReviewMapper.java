@@ -24,4 +24,6 @@ public interface ReviewMapper {
 	public List<Integer> selectStarByShowId(int showId);
 	
 	public int selectCountByShowId(int showId);
+	
+	public List<Review> selectReviewByShowId(int showId);
 }

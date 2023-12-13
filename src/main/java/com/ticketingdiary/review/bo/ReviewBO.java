@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.ticketingdiary.review.domain.Review;
 import com.ticketingdiary.review.domain.ShowReview;
 import com.ticketingdiary.review.mapper.ReviewMapper;
+import com.ticketingdiary.user.bo.UserBO;
 import com.ticketingdiary.user.domain.User;
 
 @Service
@@ -16,6 +17,9 @@ public class ReviewBO {
 
 	@Autowired
 	private ReviewMapper reviewMapper;
+	
+	@Autowired
+	private UserBO userBO;
 	
 	//input:bookingId, userId, showId, star, comment		output:X
 	public void addReview(int bookingId, int userId, int showId, int star, String comment) {
@@ -46,9 +50,23 @@ public class ReviewBO {
 	
 	// input:showId		output:List<ShowRivew>
 	public List<ShowReview> generateShowReview(int showId){
-		List<ShowReview> reviewList = new ArrayList<>();
+		List<ShowReview> showReviewList = new ArrayList<>();
 		
-		// userList를 가져온다.
-		List<User> userList = 
+		// review중 showId로 review 리스트를 가지고 온다.
+		List<Review> reviewList = reviewMapper.selectReviewByShowId(showId);
+		for(Review review : reviewList) {
+			ShowReview showReview = new ShowReview();
+			
+			// user
+			User user = userBO.findUserById(review.getUserId());
+			showReview.setUser(user);
+			
+			// review
+			showReview.setReview(review);
+			
+			// list에 저장
+			showReviewList.add(showReview);
+		}
+		return showReviewList;
 	}
 }

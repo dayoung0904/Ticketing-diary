@@ -14,7 +14,7 @@
 		</thead>
 		<tbody>
 		<c:forEach items="${myTicketList}" var="myTicket">
-			<tr>
+			<tr style='height:180px;'>
 				<td class="text-center"><h6><fmt:formatDate value="${myTicket.bookingEntity.createdAt}" pattern="yyyy.M.d" /></h6></td>
 				<td>
 					<div class="d-flex">

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="d-flex justify-content-center">
 	<div class="d-flex col-8">
 		<div class="mx-5">
@@ -32,6 +32,49 @@
 	<div class="mx-5">
 		<button id="bookingBtn" class="btn btn-block btn-info text-white my-3" data-show-id="${show.id}" data-user-name="${userName}">예매하기</button>
 	</div>
+</div>
+
+<div class="text-center my-5"><h5>100자평</h5></div>
+<div class="d-flex justify-content-center">
+	<c:if test="${empty reviewList}">
+	작성된 리뷰가 없습니다.	
+	</c:if>
+	<c:if test="${!empty reviewList}">
+	<table style='width:1500px; table-layout:fixed; word-break:break-all; height:auto'>
+		<thead class="text-center">
+			<tr>
+				<th>별점</th>
+				<th>리뷰</th>
+				<th>글쓴이</th>
+			</tr>
+		</thead>
+		<tbody>
+		<c:forEach items="${reviewList}" var="review">
+			<tr style='height:50px;'>
+				<td class="text-center text-warning">
+					<c:if test="${review.review.star == 1}">
+					★
+					</c:if>
+					<c:if test="${review.review.star == 2}">
+					★★
+					</c:if>
+					<c:if test="${review.review.star == 3}">
+					★★★
+					</c:if>
+					<c:if test="${review.review.star == 4}">
+					★★★★
+					</c:if>
+					<c:if test="${review.review.star == 5}">
+					★★★★★
+					</c:if>
+				</td>
+				<td class="text-center">${review.review.comment}</td>
+				<td class="text-center">${review.user.name}</td>	
+			</tr>
+		</c:forEach>
+		</tbody>
+	</table>
+	</c:if>
 </div>
 
 <script>

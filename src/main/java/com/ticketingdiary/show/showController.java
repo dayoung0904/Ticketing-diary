@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ticketingdiary.review.bo.ReviewBO;
+import com.ticketingdiary.review.domain.ShowReview;
 import com.ticketingdiary.show.bo.ShowBO;
 import com.ticketingdiary.show.domain.Show;
 import com.ticketingdiary.show.domain.ShowStar;
@@ -77,10 +78,11 @@ public class showController {
 			Model model,
 			@RequestParam("showId") int showId) {
 		
-		List<ShowReivew> reviewList = 
+		List<ShowReview> reviewList = reviewBO.generateShowReview(showId);
 		
 		Show show = showBO.getShowById(showId);
 		
+		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("show", show);
 		model.addAttribute("viewName", "show/showDetail");
 		return "template/layout";

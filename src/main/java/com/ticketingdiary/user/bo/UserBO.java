@@ -44,4 +44,9 @@ public class UserBO {
 		
 		userMapper.insertUser(loginId, password, name, phoneNumber, email, loginType);
 	}
+	
+	// input: id		output:user
+	public User findUserById(int id) {
+		return userMapper.selectUserById(id);
+	}
 }
