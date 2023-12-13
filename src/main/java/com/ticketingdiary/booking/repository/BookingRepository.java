@@ -14,5 +14,5 @@ public interface BookingRepository extends JpaRepository<BookingEntity, Integer>
 	
 	public BookingEntity findById(int bookingId);
 	
-
+	public List<BookingEntity> findByUserIdAndShowId(int userId, int showId);
 }

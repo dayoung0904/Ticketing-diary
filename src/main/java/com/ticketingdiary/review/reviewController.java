@@ -37,9 +37,6 @@ public class reviewController {
 			HttpSession session,
 			Model model) {
 		
-		// 사용자 id 추출
-		int userId = (int)session.getAttribute("userId");
-		
 		BookingEntity bookingEntity = bookingBO.findBookingEntityById(bookingId);
 		Show show = showBO.getShowById(bookingEntity.getShowId());
 		

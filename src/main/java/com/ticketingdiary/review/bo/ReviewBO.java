@@ -1,12 +1,15 @@
 package com.ticketingdiary.review.bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ticketingdiary.review.domain.Review;
+import com.ticketingdiary.review.domain.ShowReview;
 import com.ticketingdiary.review.mapper.ReviewMapper;
+import com.ticketingdiary.user.domain.User;
 
 @Service
 public class ReviewBO {
@@ -39,5 +42,13 @@ public class ReviewBO {
 		// 평균
 		double average = (Math.round(sum/count*10)/10.0);
 		return average;
+	}
+	
+	// input:showId		output:List<ShowRivew>
+	public List<ShowReview> generateShowReview(int showId){
+		List<ShowReview> reviewList = new ArrayList<>();
+		
+		// userList를 가져온다.
+		List<User> userList = 
 	}
 }

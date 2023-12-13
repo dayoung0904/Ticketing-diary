@@ -1,6 +1,5 @@
 package com.ticketingdiary.show;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ticketingdiary.review.bo.ReviewBO;
 import com.ticketingdiary.show.bo.ShowBO;
 import com.ticketingdiary.show.domain.Show;
 import com.ticketingdiary.show.domain.ShowStar;
@@ -20,6 +20,9 @@ public class showController {
 	
 	@Autowired
 	private ShowBO showBO;
+	
+	@Autowired
+	private ReviewBO reviewBO;
 	
 	/**
 	 * 메인 화면 및 전체 show list view
@@ -73,6 +76,8 @@ public class showController {
 	public String showDetailView(
 			Model model,
 			@RequestParam("showId") int showId) {
+		
+		List<ShowReivew> reviewList = 
 		
 		Show show = showBO.getShowById(showId);
 		

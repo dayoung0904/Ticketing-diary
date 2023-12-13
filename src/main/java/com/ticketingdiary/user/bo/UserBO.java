@@ -2,7 +2,6 @@ package com.ticketingdiary.user.bo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ticketingdiary.user.domain.User;
 import com.ticketingdiary.user.mapper.UserMapper;

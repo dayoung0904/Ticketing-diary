@@ -77,4 +77,8 @@ public class BookingBO {
 		
 		return myTicket;
 	}
+	
+	public List<BookingEntity> findBookingEntityByUserIdAndShowId(int userId, int showId){
+		return bookingRepository.findByUserIdAndShowId(userId, showId);
+	}
 }
