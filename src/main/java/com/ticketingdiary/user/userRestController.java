@@ -150,13 +150,12 @@ public class userRestController {
 			
 		// 회원 정보 조회(이메일과 닉네임으로)
 		User user = userBO.findUserByNameEmail(String.valueOf(userInfo.get("nickname")), String.valueOf(userInfo.get("email")));
-			
+		
 		// 로그인 처리
 		if(user != null) {
 			// 사용자가 있는 경우
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("userName", user.getName());
-			
 		} else {
 			// 사용자가 없는 경우 
 			//해당 메일과 닉네임으로 저장 다시 조회해서 & session 등록

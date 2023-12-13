@@ -31,7 +31,7 @@ public class bookingController {
 	private BookingBO bookingBO;
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	/**
 	 * 예약 리스트 view
 	 * @param model
@@ -66,11 +66,20 @@ public class bookingController {
 	@GetMapping("/booking-detail-view")
 	public String bookingDetailView(Model model,
 			@RequestParam("showId") int showId,
-			@RequestParam("bookingDate") String bookingDate) {
+			@RequestParam("bookingDate") String bookingDate,
+			HttpSession session) {
+		
+		int userId = (int) session.getAttribute("userId");
+		int ticketSum = 0;
+		List<BookingEntity> buyTicket = new ArrayList<>();
+		buyTicket = bookingBO.findBookingEntityByUserIdAndShowId(userId, showId);
+		for(int i = 0; i < buyTicket.size(); i++) {
+			ticketSum += buyTicket.get(i).getBuy();
+		}
 		
 		Show show = showBO.getShowById(showId);
-		List ticketLimit = new ArrayList<>();
-		for (int i = 0; i < show.getLimitBuy(); i++) {
+		List<Integer> ticketLimit = new ArrayList<>();
+		for (int i = 0; i < show.getLimitBuy() - ticketSum; i++) {
             ticketLimit.add(i+1);
 		}
 

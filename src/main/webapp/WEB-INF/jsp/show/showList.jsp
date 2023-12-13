@@ -17,11 +17,10 @@
 </div>
 
 <%-- paging --%>
-<div class="text-center">
-	<c:if test="${prevId ne 0}">
-		<a href="/show/list-view?prevId=${prevId}" class="mr-5">&lt;&lt; 이전</a>
-	</c:if>
-	<c:if test="${nextId ne 0}">
-		<a href="/show/list-view?nextId=${nextId}">다음 &gt;&gt;</a>
-	</c:if>
+<div class="text-center my-3">
+	<a class="mx-2" href="/show/list-view?page=1&pageSize=5">1</a>
+	<a class="mx-2" href="/show/list-view?page=2&pageSize=5">2</a>
+	<a class="mx-2" href="/show/list-view?page=3&pageSize=5">3</a>
+	<a class="mx-2" href="/show/list-view?page=4&pageSize=5">4</a>
+	<a class="mx-2" href="/show/list-view?page=5&pageSize=5">5</a>
 </div>

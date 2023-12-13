@@ -27,7 +27,7 @@ public class diaryController {
 	private DiaryBO diaryBO;
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	/**
 	 * 다이어리 view
 	 * @param model

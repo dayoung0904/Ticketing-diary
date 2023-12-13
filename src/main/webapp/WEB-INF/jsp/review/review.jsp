@@ -35,7 +35,7 @@
 					</fieldset>
 					<div>
 						<textarea class="col-auto form-control" type="text" id="comment"
-								  placeholder="리뷰를 남겨주세요.(200자 이내)" maxlength="200"></textarea>
+								  placeholder="리뷰를 남겨주세요.(100자 이내)" maxlength="100"></textarea>
 					</div>
 				</form>	
 			</td>
@@ -67,6 +67,11 @@ $(document).ready(function(){
 		let bookingId = $(this).data('booking-id');
 		let showId = $(this).data('show-id');
 		// alert(star);
+		
+		if(!comment){
+			alert("내용을 작성해주세요.");
+			return false;
+		}
 		
 		$.ajax({
 			type: "post"

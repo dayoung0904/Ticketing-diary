@@ -23,10 +23,6 @@ public class ShowBO {
 	
 	private static final int POST_MAX_SIZE = 5;
 	
-	/*
-	 * //input:X output:List<Show> public List<Show> getShowListLimit(){ return
-	 * showMapper.selectShowListLimit(); }
-	 */
 	
 	//input:showId		output:Show
 	public Show getShowById(int showId) {
@@ -105,6 +101,36 @@ public class ShowBO {
 			ShowStar showStar = new ShowStar();
 			
 			// category의 show 한개
+			showStar.setShow(show);
+			
+			// 별점
+			showStar.setAverageStar(reviewBO.findReviewStarAverage(show.getId()));
+			
+			showStarList.add(showStar);
+		}
+		return showStarList;
+	}
+	
+	// input:X		output: 전체 show의 갯수
+	public int findShowTotal() {
+		return showMapper.selectShowTotal();
+	}
+	
+	public List<ShowStar> findshowPaging(int page, int pageSize){
+		int start = 0;
+		if(page <= 0 ) {
+			page = 1;
+		} else {
+			start = (page - 1) * pageSize;
+		}
+		
+		List<ShowStar> showStarList = new ArrayList<>();
+		
+		List<Show> showList = showMapper.selectShowPaging(start, pageSize);
+		for(Show show : showList) {
+			ShowStar showStar = new ShowStar();
+			
+			// show 한개
 			showStar.setShow(show);
 			
 			// 별점

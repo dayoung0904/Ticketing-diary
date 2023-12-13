@@ -30,7 +30,7 @@ public class diaryRestController {
 	private DiaryBO diaryBO;
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	/**
 	 * 캘린더에 작성될 event=booking list API
 	 * @param session

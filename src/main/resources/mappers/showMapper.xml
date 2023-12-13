@@ -72,4 +72,21 @@
 		WHERE
 			`category` = #{category}
  	</select>
+ 	
+ 	<select id="selectShowPaging" resultType="com.ticketingdiary.show.domain.Show">
+ 		SELECT
+ 			`id`
+			,`name`
+			,`posterImagePath`
+		FROM
+			`show`
+		LIMIT #{start}, #{pageSize}
+ 	</select>
+ 	
+ 	<select id="selectShowTotal">
+ 		SELECT
+ 			COUNT(*)
+ 		FROM
+ 			`show`
+ 	</select>
  </mapper>

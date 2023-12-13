@@ -11,10 +11,15 @@
 <div class="d-flex justify-content-center my-5">
 	<div class="mx-3">${show.ticketType}</div>
 	<select name="ticketCount" id="ticketCount">
-		<option>매수를 선택하세요.</option>
-		<c:forEach items="${ticketLimit}" var="limit">
-	  	<option value="${limit}">${limit}매</option>
-		</c:forEach>
+		<c:if test="${!empty ticketLimit}">
+			<option>매수를 선택하세요.</option>
+			<c:forEach items="${ticketLimit}" var="limit">
+		  	<option value="${limit}">${limit}매</option>
+			</c:forEach>
+		</c:if>
+		<c:if test="${empty ticketLimit}">
+			<option>1인 제한 수량이 초과되었습니다.</option>
+		</c:if>
 	</select>
 </div>
 <div class="d-flex justify-content-center my-5">

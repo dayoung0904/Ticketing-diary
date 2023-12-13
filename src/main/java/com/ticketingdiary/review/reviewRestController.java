@@ -24,7 +24,7 @@ public class reviewRestController {
 	private ReviewBO reviewBO;
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	/**
 	 * 리뷰 작성 API
 	 * @param session

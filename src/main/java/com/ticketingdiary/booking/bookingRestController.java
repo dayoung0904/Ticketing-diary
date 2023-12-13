@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ticketingdiary.booking.Entiry.BookingEntity;
 import com.ticketingdiary.booking.bo.BookingBO;
 
 @RestController
@@ -27,7 +26,7 @@ public class bookingRestController {
 	private BookingBO bookingBO;
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	/**
 	 * 예약하기 API
 	 * @param buy

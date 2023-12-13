@@ -20,4 +20,10 @@ public interface ShowMapper {
 	public Show selectShowById(int showId);
 	
 	public List<Show> selectShowByCategory(String category);
+	
+	public int selectShowTotal();
+	
+	public List<Show> selectShowPaging(
+			@Param("start") int start,
+			@Param("pageSize") int pageSize);
 }
