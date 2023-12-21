@@ -31,9 +31,10 @@
 <summary>
   DB & URL 설계
 </summary>
-   https://docs.google.com/spreadsheets/d/1Rio2pOuLE5FMsHToA5AL6RPjkkzGhFiOByQnmKICn98/edit?usp=sharing
+  https://drive.google.com/file/d/1l6bq409UQPklDeGVtwaPBJX10x3yOjbz/view?usp=drive_link
+  https://docs.google.com/spreadsheets/d/1Rio2pOuLE5FMsHToA5AL6RPjkkzGhFiOByQnmKICn98/edit?usp=sharing
 </details>
-![image](https://github.com/dayoung0904/Ticketing-diary/assets/144106932/c92e4d59-2e0a-491f-b03c-842358364c7c)
+
 
 
 ### 프로젝트 포토폴리오
