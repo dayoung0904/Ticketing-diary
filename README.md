@@ -19,6 +19,7 @@
 <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"/>
 <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white"/>
 
+
 <details>
 <summary>
   프로젝트 기획서
@@ -38,3 +39,11 @@
   ![image](https://github.com/dayoung0904/Ticketing-diary/assets/144106932/9b1639d2-c286-4f74-a9e7-c2f6bbd6608a)
    https://docs.google.com/spreadsheets/d/1Rio2pOuLE5FMsHToA5AL6RPjkkzGhFiOByQnmKICn98/edit?usp=sharing
 </details>
+
+
+### 프로젝트 포토폴리오
+https://hebom97.notion.site/Ticketing-diary-1ab6458c042e42a6aa8ac50fd5f46a6b
+
+
+### 프로젝트 주소
+http://43.202.43.175:8080/show/list-view
