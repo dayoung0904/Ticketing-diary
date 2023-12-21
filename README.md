@@ -12,8 +12,13 @@
 2023-11-13 ~ 2023-12-12
 
 ### 개발환경
-<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/> <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"/> <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/> <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"/> <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white"/>
-
+- JAVA (v 20.0.1)
+- SPRING FRAMEWORK (v 2.7.17)
+- DB : MYSQL
+- ORM FRAME WORK : MyBatis, JPA
+- git
+- lib : Fullcalendar, JSTL, Bootstrap
+- 운영 서버 : AWS
 
 <details>
 <summary>
