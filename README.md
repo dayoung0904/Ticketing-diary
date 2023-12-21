@@ -12,13 +12,8 @@
 2023-11-13 ~ 2023-12-12
 
 ### 개발환경
-<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
-<img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"/>
-<img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white"/>
-<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
-<img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"/>
-<img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white"/>
-
+<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/> <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"/> <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/> <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"/> <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white"/>
+<br>
 
 <details>
 <summary>
@@ -39,7 +34,7 @@
   ![image](https://github.com/dayoung0904/Ticketing-diary/assets/144106932/9b1639d2-c286-4f74-a9e7-c2f6bbd6608a)
    https://docs.google.com/spreadsheets/d/1Rio2pOuLE5FMsHToA5AL6RPjkkzGhFiOByQnmKICn98/edit?usp=sharing
 </details>
-
+<br>
 
 ### 프로젝트 포토폴리오
 https://hebom97.notion.site/Ticketing-diary-1ab6458c042e42a6aa8ac50fd5f46a6b
