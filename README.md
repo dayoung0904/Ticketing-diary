@@ -1,5 +1,5 @@
 ## Ticketing diary
-### 프로젝트 제작 이유
+#### 프로젝트 제작 이유
 기존의 예매 사이트들은 예매 기능만 있는 사이트가 대부분이었습니다. 그런 사이트가 아닌 공연에 대한 느낀 점 및 자신만의 기록을 남길 수 있는 서비스를 제공하면 사용자들이 공연에 대한 기억을 오래 간직할 수 있을 것이라는 생각으로 제작하게 되었습니다.
 
 
@@ -10,10 +10,10 @@
 다이어리 화면
 ![image](https://github.com/dayoung0904/Ticketing-diary/assets/144106932/21409b6b-393c-4ec6-89c1-11c569954ca2)   
 
-### 개발기간
+#### 개발기간
 2023-11-13 ~ 2023-12-12
 
-### 개발환경
+#### 개발환경
 - JAVA (v 20.0.1)
 - SPRING FRAMEWORK (v 2.7.17)
 - DB : MYSQL
@@ -45,10 +45,21 @@
 </details>    
 
 
-### 프로젝트 포토폴리오
+#### 프로젝트 포토폴리오
 https://hebom97.notion.site/Ticketing-diary-1ab6458c042e42a6aa8ac50fd5f46a6b   
 
 
-### 프로젝트 주소
+#### 프로젝트 주소
 http://43.202.43.175:8080/show/list-view
 - - -
+
+#### 화면별 기능
+<details>
+<summary>
+  USER
+</summary>
+  1. 회원가입 화면
+  ![image](https://github.com/dayoung0904/Ticketing-diary/assets/144106932/88ebd7ec-c41e-4f25-a432-caabc2cf0bc0)
+
+  2. 로그인 화면
+</details>
