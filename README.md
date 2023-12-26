@@ -54,12 +54,3 @@ http://43.202.43.175:8080/show/list-view
 - - -
 
 #### 화면별 기능
-<details>
-<summary>
-  USER
-</summary>
-  1. 회원가입 화면
-  ![image](https://github.com/dayoung0904/Ticketing-diary/assets/144106932/88ebd7ec-c41e-4f25-a432-caabc2cf0bc0)
-
-  2. 로그인 화면
-</details>
