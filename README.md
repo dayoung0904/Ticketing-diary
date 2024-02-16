@@ -52,5 +52,3 @@ https://hebom97.notion.site/Ticketing-diary-1ab6458c042e42a6aa8ac50fd5f46a6b
 #### 프로젝트 주소
 http://43.202.43.175:8080/show/list-view
 - - -
-
-#### 화면별 기능
